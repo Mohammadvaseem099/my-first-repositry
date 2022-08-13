@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 
 
@@ -7,57 +6,44 @@ module.exports = router;
 // adding this comment for no reason
 
 
-let players = [
-    {
-        "name": "manish",
-        "dob": "1/1/1995",
-        "gender": "male",
-        "city": "jalandhar",
-        "sports": [
-            "swimming"
-        ]
-    },
-    {
-        "name": "gopal",
-        "dob": "1/09/1995",
-        "gender": "male",
-        "city": "delhi",
-        "sports": [
-            "soccer"
-        ]
-    },
-    {
-        "name": "lokesh",
-        "dob": "1/1/1990",
-        "gender": "male",
-        "city": "mumbai",
-        "sports": [
-            "soccer"
-        ]
-    },
+let persons = [{
+    name: "mv",
+    age: 10,
+    votingStatus: false
+}, 
+{
+    name: "mw",
+    age: 20,
+    votingStatus: false
+},
+{
+    name: "mva",
+    age: 30,
+    votingStatus: false
+}, 
+{
+    name: "mwa",
+    age: 70,
+    votingStatus: false
+}, 
+{
+    name: "wa",
+    age: 5,
+    votingStatus: false
+},
 ]
 
-router.post('/players', function(req, res){
-    let newPlayer = req.body
-    let newPlayersName = newPlayer.name
-    let isNameRepeated = false
-
-    for(let i=0; i<players.length; i++){
-        if(players[i].name == newPlayersName){
-            isNameRepeated = true;
-            break;
-        }
-    }
-
-    if(isNameRepeated){
-        res.send("This player was already added")
-    } else {
-        players.push(newPlayer)
-        res.send({data:players,status:true})
-        
-    }
-    })
-
-
+        router.post("/test-post-man", function(req, res){
+            let votingAge = req.body;
+            let newVotingAge = votingAge;
+            let newVote = [];
+            for(let i=0; i<person.length; i++){
+                if(newVotingAge<=person[i].age){
+                    (person[i].votingStatus = true)
+                    newVote.push(person[i])
+                }
+            }
+            res.send({newVote})
+        })
 
 module.exports = router;
