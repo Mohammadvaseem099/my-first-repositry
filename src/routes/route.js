@@ -1,19 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const BookController = require("../controllers/bookController.js")
+const BookController = require("../controllers/AuthorBookController.js")
 
 
-router.post('/createbook', BookController.createBook)
-
-router.get('/bookList', BookController.bookList)
-
-router.post('/getBookslnYear', BookController.getBookslnYear)
-
-router.post('/getParticularBooks', BookController.getParticularBooks)
-
-router.get('/getXINRBooks', BookController.getXINRBooks)
-
-router.get('/getRandomBooks', BookController.getRandomBooks)
+router.post('/createBook', BookController.createBook)
+router.post('/createAuthor', BookController.createAuthor)
+router.get('/authorAllBook', BookController.authorAllBook)
+router.get('/findAndUpdate', BookController.findAndUpdate)
 
 module.exports = router;
+
