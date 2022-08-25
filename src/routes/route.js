@@ -1,24 +1,29 @@
 const express = require('express');
 const router = express.Router();
 
-const newAuthorController = require("../controllers/newAuthorController.js")
+const moment = require('moment');
 
-const newPublisherController = require("../controllers/newPublisherController.js")
+const mid1 = async function(req, res){
+    let currentTime = moment();
+    let ipAdd = req.ip
+    let path = req.originalUrl
+    console.log(currentTime, ipAdd, path)
+//     console.log(ipAdd)
+//     console.log(path)
+}
 
-const newBook2Controller = require("../controllers/newBookController.js")
-
-const newBookController1 = require("../controllers/newBookController")
-
-
-router.post("/createAuthor", newAuthorController.createAuthor)
-
-router.post("/createPublisher", newPublisherController.createPublisher)
-
-router.post("/newBookController", newBook2Controller.newBookController)
-
-router.get("/getAllBooksByTheirId", newBookController1.getAllBooksByTheirId)
-
-router.get("/updateData", newBookController1.updateData)
+router.get("/middle", mid1)
 
 module.exports = router;
 
+
+
+
+
+
+
+
+
+// const createProd= require("../controllers/productController")
+
+// router.post('/createProduct', createProd.createProduct)
