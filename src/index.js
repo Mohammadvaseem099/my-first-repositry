@@ -8,6 +8,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req, res, next){
+    console.log("inside global middleware")
+    next()
+})
+
+
 mongoose.connect("mongodb+srv://Mohammadvaseem099:uDNTAkafkNrYLe0C@cluster0.2npclft.mongodb.net/Mohammadvaseem099",{
 useNewUrlParser: true
 })
