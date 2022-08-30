@@ -1,4 +1,4 @@
-const userModel2 = require("../models/newUserModel");
+const newUserModel = require("../models/newUserModel");
 const jwt = require("jsonwebtoken");
 
 const createUser2 = async function(req,res){
@@ -7,12 +7,15 @@ const createUser2 = async function(req,res){
     res.send({status:true, msg:user})
 };
 
+
+
 const login = async function(req,res){
     let userName2 = req.body.emailId
     let password = req.body.password
 
     let check = await newUserModel.findOne({emailId:userName2, password:password})
     if(!check) return res.send({status:false, msg: "UserId or password are invalid"})
+   
     let token = jwt.sign(
         {
           userId: check._id.toString(),
@@ -50,6 +53,6 @@ const updateData = async function (req, res){
 const deleteData = async function(req,res){
     let userId = req.params.userId
     let findAndUpdate = await newUserModel.findOneAndUpdate({_id:userId}, {$set:{isDeleted:true}}, {new:true});
-    res.send({status:true, msg:findAndUpdate})
+    res.send({status:true, msg:findAndUpdate}) 
 }
 module.exports={createUser2,login,getUserData,updateData,deleteData}

@@ -3,7 +3,8 @@ const router = express.Router();
 // const userController= require("../controllers/userController")
 const userController = require("../controllers/newUserController")
 
-const middle1 = require("../middlewear/userMiddlewear")
+const middle1 = require("../middleware/userMiddleware")
+const middle2 = require("../middleware/authMiddleware")
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
@@ -13,11 +14,11 @@ router.post("/createUser2", userController.createUser2)
 
 router.post("/login", userController.login)
 
-router.get("/getUserData/:userId", middle1.middleware, userController.getUserData)
+router.get("/getUserData/:userId", middle1.middleware, middle2.authorisation, userController.getUserData)
 
-router.get("/updateData/:userId", middle1.middleware, userController.updateData)
+router.get("/updateData/:userId", middle1.middleware, middle2.authorisation, userController.updateData)
 
-router.get("/deleteData/:userId", middle1.middleware, userController.deleteData)
+router.get("/deleteData/:userId", middle1.middleware, middle2.authorisation, userController.deleteData)
 
 
 module.exports = router;
