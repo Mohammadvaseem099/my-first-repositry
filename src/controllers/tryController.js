@@ -1,7 +1,6 @@
 const userModel2 = require("../models/tryModel.js");
 const jwt = require("jsonwebtoken");
 
-//______________________Create User.______________________
 
 
 const createUser2 = async function (req, res) {
@@ -19,7 +18,6 @@ const createUser2 = async function (req, res) {
     }
 };
 
-//____________________________Login Id._____________________________
 
 const login = async function (req, res) {
     try {
@@ -46,7 +44,6 @@ const login = async function (req, res) {
 
 }
 
-//_________________________Get User Data.___________________________
 
 const getUserData = async function (req, res) {
     try {
@@ -62,7 +59,6 @@ const getUserData = async function (req, res) {
 }
 
 
-//_________________________Update Data.______________________________
 
 const updateData = async function (req, res) {
     try{
@@ -77,8 +73,6 @@ const updateData = async function (req, res) {
 
 }
 
-//__________________________________Delete User Data.____________________________________
-
 const deleteData = async function (req, res) {
     try{
     let userId = req.params.userId
@@ -90,4 +84,8 @@ const deleteData = async function (req, res) {
     }
 }
 
-module.exports = { createUser2, login, getUserData, updateData, deleteData }
+module.exports.createUser2=createUser2
+module.exports.login=login
+module.exports.getUserData=getUserData
+module.exports.updateData=updateData
+module.exports.deleteData=deleteData
