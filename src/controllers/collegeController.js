@@ -1,6 +1,6 @@
 const internModel = require('../models/internModel')
 const collegeModel = require('../models/collegeModel')
-const checkName = /^[a-z\s]+$/i
+const checkName = /^[a-z\s ,]+$/i
 
 const logoValidation = function (logo) {
     let regex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
@@ -8,7 +8,7 @@ const logoValidation = function (logo) {
     return regex.test(logo)
 }
 const isValid = (data) => {
-    if (!typeof data === "string" || data.trim().length == 0) {
+    if (typeof data !== "string" || data.trim().length == 0) {
         return false
     } return true
 }
@@ -63,9 +63,9 @@ const getCollege = async function (req, res) {
 
 try {
 
-    const clgName = req.query.name
+    const clgName = req.query.collegeName
     const query = req.query
-    const comp = ["name"]
+    const comp = ["collegeName"]
     if (!Object.keys(query).every(elem => comp.includes(elem)))
       return res.status(400).send({ status: false, msg: "wrong query parameters" });
 

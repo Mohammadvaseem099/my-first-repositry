@@ -1,9 +1,9 @@
 const collegeModel = require('../models/collegeModel')
 const internModel = require('../models/internModel')
-const checkName = /^[a-z\s]+$/i
+const checkName = /^[a-z\s ,]+$/i
 
 const isValid = (detail) => {
-    if (!typeof detail === "string" || detail.trim().length == 0) {
+    if (typeof detail !== "string" || detail.trim().length == 0) {
         return false
     } return true
 }
